@@ -10,7 +10,7 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Bergabung Bersama Kami!</h1>
                         </div>
-                        <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                        <form class="user" method="post" action="<?= base_url('auth'); ?>/registration">
                             <div class="form-group row">
                                 <div class="form-group col-lg-12">
                                     <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Nama Lengkap" value="<?= set_value('name'); ?>">
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="email" placeholder="Alamat Email" value="<?= set_value('email'); ?>">
+                                <input type="email" class="form-control form-control-user" id="email" name="Email" placeholder="Alamat Email" value="<?= set_value('email');  ?>">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group row">

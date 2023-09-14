@@ -6,26 +6,28 @@ class auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->load->library('form_validation')) {
-            // Handle library loading error here.
-            // You can log an error message or take appropriate action.
-            log_message('error', 'Failed to load form_validation library.');
-            // You can also show a user-friendly error message or redirect to an error page.
-            show_error('An error occurred while loading the form validation library.', 500);
-        }
+        $this->load->library('form_validation');
     }
+
     public function index()
     {
-        $this->load->view('templates/auth_header');
+        $data['title'] = 'SPK - Login Anggota';
+        $this->load->view('templates/auth_header', $data);
         $this->load->view('auth/login');
         $this->load->view('templates/auth_footer');
     }
 
     public function registration()
     {
-        $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email',
+            [
+                'valid_email' => 'Email tidak Valid'
+            ]
+        );
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
             'matches' => 'Password berbeda!',
             'min_length' => 'Password terlalu pendek!'
@@ -33,7 +35,6 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-
             $data['title'] = 'SPK - Registrasi Anggota';
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/registration');
