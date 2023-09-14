@@ -23,9 +23,10 @@ class auth extends CI_Controller
         $this->form_validation->set_rules(
             'email',
             'Email',
-            'required|trim|valid_email',
+            'required|trim|valid_email|is_unique[user.email]',
             [
-                'valid_email' => 'Email tidak Valid'
+                'valid_email' => 'Email tidak Valid',
+                'is_unique' => 'Email ini telah terdaftar'
             ]
         );
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
@@ -51,6 +52,7 @@ class auth extends CI_Controller
             ];
 
             $this->db->insert('user', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Berhasil Terdaftar! Silakan Log In</div>');
             redirect('auth');
         }
     }
