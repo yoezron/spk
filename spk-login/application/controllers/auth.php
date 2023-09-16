@@ -11,6 +11,10 @@ class auth extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('email')) {
+            redirect('user');
+        }
+
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -65,6 +69,10 @@ class auth extends CI_Controller
 
     public function registration()
     {
+        if ($this->session->userdata('email')) {
+            redirect('user');
+        }
+
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules(
             'email',
@@ -75,6 +83,7 @@ class auth extends CI_Controller
                 'is_unique' => 'Email ini telah terdaftar'
             ]
         );
+        $this->form_validation->set_rules('kampus', 'Kampus', 'required|trim');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
             'matches' => 'Password berbeda!',
             'min_length' => 'Password terlalu pendek!'
@@ -94,7 +103,8 @@ class auth extends CI_Controller
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 1,
-                'date_created' => time()
+                'date_created' => time(),
+                'kampus' => htmlspecialchars($this->input->post('kampus', true))
             ];
 
             $this->db->insert('user', $data);
@@ -111,8 +121,8 @@ class auth extends CI_Controller
         redirect('auth');
     }
 
-    public function blocked(){
+    public function blocked()
+    {
         $this->load->view('auth/blocked');
     }
-
 }
