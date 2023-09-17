@@ -57,27 +57,9 @@
 
 
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-info-circle"></i>
-                <span>Informasi Anggota</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Informasi:</h6>
-                    <a class="collapse-item" href="buttons.html">Info Serikat</a>
-                    <a class="collapse-item" href="cards.html">Info Anggota</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+            <a class="nav-link" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-fw fa-running"></i>
                 <span>Keluar</span></a>
         </li>

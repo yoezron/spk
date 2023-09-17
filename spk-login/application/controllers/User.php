@@ -74,6 +74,7 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('kampus', 'Asal Kampus', 'trim');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -81,7 +82,12 @@ class User extends CI_Controller
             $this->load->view('user/formulir', $data);
             $this->load->view('templates/footer');
         } else {
-            $name = $this->input->post('name');
+            $update = [
+                'name' => $this->input->post('name', true),
+                'kampus' => $this->input->post('kampus', true),
+                'prodi' => $this->input->post('prodi', true),
+                'gender' => $this->input->post('gender')
+            ];
             $email = $this->input->post('email');
 
             //gambar yang diupload
@@ -105,11 +111,46 @@ class User extends CI_Controller
                 }
             }
 
-            $this->db->set('name', $name);
+            $this->db->set($update);
             $this->db->where('email', $email);
             $this->db->update('user');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil anda berhasil diubah!</div>');
             redirect('user');
         }
+    }
+    public function adart()
+    {
+        $data['title'] = 'AD-ART';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/adart', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function manifesto()
+    {
+        $data['title'] = 'Manifesto';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/manifesto', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function sejarah()
+    {
+        $data['title'] = 'Sejarah SPK';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/sejarah', $data);
+        $this->load->view('templates/footer');
     }
 }

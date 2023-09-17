@@ -16,6 +16,7 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title" style="font-weight:bold"><?= $user['name']; ?></h5>
+                    <p class="card-text"><?= $user['kampus']; ?></p>
                     <p class="card-text"><?= $user['email']; ?></p>
                     <p class="card-text"><small class="text-body-secondary">Bergabung sejak <?= date('d F Y', $user['date_created']); ?></small></p>
                 </div>
