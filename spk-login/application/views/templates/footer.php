@@ -71,6 +71,26 @@
             }
         });
     });
+
+    $('.form-check-input-2').on('change', function() {
+        var isChecked = $(this).prop('checked');
+        var role_id = $(this).data('role');
+        var user_id = $(this).data('id'); // Mengambil nilai data-id
+
+        $.ajax({
+            url: "<?= base_url('user/confirmrole'); ?>",
+            method: 'post',
+            data: {
+                role_id: role_id,
+                isChecked: isChecked,
+                user_id: user_id // Mengirim user_id ke controller
+            },
+            success: function() {
+                document.location.href = "<?= base_url('user/confirm'); ?>";
+            },
+
+        });
+    });
 </script>
 
 </body>

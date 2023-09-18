@@ -12,4 +12,25 @@ class User_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+
+    public function confirmrole()
+    {
+        $role_id = $this->input->post('isChecked');
+        $role_id = $this->input->post('role_id');
+        $user_id = $this->input->post('user_id'); // Mengambil nilai user_id dari AJAX
+
+        $data = ['role_id' => 6];
+        $unconfirm = ['role_id' => 2];
+
+        // Update berdasarkan user_id, bukan semua data di tabel user
+        $this->db->where('id', $user_id);
+
+        if ($role_id) {
+            $this->db->update('user', $data);
+        } else {
+            $this->db->update('user', $unconfirm);
+        }
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota berhasil dikonfirmasi!</div>');
+    }
 }

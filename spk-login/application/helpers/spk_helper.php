@@ -34,3 +34,18 @@ function check_access($role_id, $menu_id)
         return "checked='checked'";
     }
 }
+
+function check_role($member)
+{
+    $ci = get_instance();
+
+    $ci->db->where('role_id', 6); // Memfilter berdasarkan role_id yang sama dengan 6
+    $ci->db->where('id', $member); // Memeriksa id yang sesuai dengan parameter $member
+    $result = $ci->db->get('user');
+
+    if ($result->num_rows() > 0) {
+        return "checked='checked'";
+    } else {
+        return ""; // Tidak ada atribut "checked" jika tidak ada baris dengan role_id 6 dan id yang sesuai
+    }
+}
