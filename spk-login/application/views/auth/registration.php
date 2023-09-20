@@ -30,17 +30,17 @@
                                     <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+                                    <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Password">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Registrasi Akun
                             </button>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="<?= base_url('auth/forgotpassword') ?>">Lupa Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('auth')  ?>">Already have an account? Login!</a>
+                                <a class="small" href="<?= base_url('auth')  ?>">Sudah punya akun? Login!</a>
                             </div>
                     </div>
                 </div>
