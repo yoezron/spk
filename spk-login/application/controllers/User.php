@@ -16,6 +16,13 @@ class User extends CI_Controller
         $data['title'] = 'Profil Saya';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        // Ambil nilai gaji dari pengguna yang sedang login
+        $gaji = $data['user']['gaji'];
+
+        // Ambil data iuran sesuai dengan nilai gaji dari tabel "user_iuran"
+        $data['iuran'] = $this->db->get_where('user_iuran', ['gaji' => $gaji])->row_array();
+
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -86,7 +93,12 @@ class User extends CI_Controller
                 'name' => $this->input->post('name', true),
                 'kampus' => $this->input->post('kampus', true),
                 'prodi' => $this->input->post('prodi', true),
-                'gender' => $this->input->post('gender')
+                'gender' => $this->input->post('gender'),
+                'alamat' => $this->input->post('alamat', true),
+                'telp' => $this->input->post('telp', true),
+                'status' => $this->input->post('status', true),
+                'employer' => $this->input->post('employer', true),
+                'gaji' => $this->input->post('gaji', true)
             ];
             $email = $this->input->post('email');
 
@@ -114,7 +126,7 @@ class User extends CI_Controller
             $this->db->set($update);
             $this->db->where('email', $email);
             $this->db->update('user');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil anda berhasil diubah!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda berhasil mendaftar! Mohon menunggu konfirmasi.</div>');
             redirect('user');
         }
     }
@@ -161,6 +173,8 @@ class User extends CI_Controller
 
         $this->db->where('role_id =', 2);
         $data['member'] = $this->db->get('user')->result_array();
+        $this->db->where('role_id !=', 2);
+        $data['active'] = $this->db->get('user')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

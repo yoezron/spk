@@ -17,6 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="font-weight:bold"><?= $user['name']; ?></h5>
                     <p class="card-text"><?= $user['kampus']; ?></p>
+                    <p class="card-text"><?= $user['prodi']; ?></p>
                     <p class="card-text"><?= $user['email']; ?></p>
                     <p class="card-text"><small class="text-body-secondary">Bergabung sejak <?= date('d F Y', $user['date_created']); ?></small></p>
                 </div>
@@ -27,10 +28,19 @@
         <img src="<?= base_url('assets/img/qr/confirm.png') ?>" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title"><b>Pembayaran Iuran Anggota</b></h5>
-            <p class="card-text">Pembayaran iuran dapat di transfer melalui: <br>Bank Syariah Indonesia(BSI)</br> <br><b>No.Rek: 706 068 7875</b></br> <br> a.n. Rr. Diah Asih Purwaningrum</br> </p>
-            <a href="https://api.whatsapp.com/send?phone=61402096486&text=Salam%20perjuangan!%20Saya%20<?= $user['name']; ?>,%20telah%20melakukan%20pembayaran%20Iuran%20Anggota%20SPK!" target="_blank" class="btn btn-primary">Konfirmasi Pembayaran</a>
+            <?php if (isset($iuran) && !empty($iuran)) { ?>
+                <p>Jumlah Iuran: <?= $iuran['iuran']; ?> /bulan</p>
+                <p class="card-text">Pembayaran iuran dapat di transfer melalui:</p>
+                <p class="card-text">Bank Syariah Indonesia (BSI)</p>
+                <p class="card-text"><b>No.Rek: 706 068 7875</b></p>
+                <p class="card-text">a.n. Rr. Diah Asih Purwaningrum</p>
+                <a href="https://api.whatsapp.com/send?phone=61402096486&text=Salam%20perjuangan!%20Saya%20<?= $user['name']; ?>,%20telah%20melakukan%20pembayaran%20Iuran%20Anggota%20SPK!" target="_blank" class="btn btn-primary">Konfirmasi Pembayaran</a>
+            <?php } else { ?>
+                <p class="card-text">Data iuran tidak ditemukan.</p>
+            <?php } ?>
         </div>
     </div>
+
 
 </div>
 <!-- /.container-fluid -->

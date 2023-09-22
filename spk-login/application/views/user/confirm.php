@@ -14,7 +14,7 @@
             <?php endif; ?>
 
             <?= $this->session->flashdata('message'); ?>
-            <h4 class="h4 mb-5 mt-5 text-gray-800"> Daftar Anggota & Calon Anggota</h4>
+            <h4 class="h4 mb-5 mt-5 text-gray-800"> Daftar Calon Anggota Serikat Pekerja Kampus</h4>
 
             <table class="table table-hover">
                 <thead>
@@ -42,6 +42,40 @@
                                     <label class="form-check-label mx-1" for="inlineCheckbox1">Terima</label>
                                 </div>
                             </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <?php $i++; ?>
+                        <?php endforeach; ?>
+                        </tr>
+                </tbody>
+            </table>
+            <h4 class="h4 mb-5 mt-5 text-gray-800"> Daftar Anggota Serikat Pekerja Kampus</h4>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nomor Anggota</th>
+                        <th scope="col">Nama Member</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Asal Kampus</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($active as $ac) : ?>
+                        <tr>
+                            <th scope="row"><?= $i;  ?></th>
+                            <td><?= $ac['date_created']; ?></td>
+                            <td><?= $ac['name']; ?></td>
+                            <td><?= $ac['email']; ?></td>
+                            <td><?= $ac['kampus']; ?></td>
+                            <td>Anggota</td>
                             <td>
 
                             </td>
