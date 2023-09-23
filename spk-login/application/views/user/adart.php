@@ -4,23 +4,13 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> Salam Perjuangan <?= $user['name']; ?> !</h1>
 
-    <div class="card">
-        <div class="card-header border-left-danger">
-            Anggaran Dasar Serikat Pekerja Kampus
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Anggaran Dasar</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    </div>
-
+    <!-- Memasukkan PDF Viewer -->
     <div class="card mt-5">
-        <div class="card-header border-left-warning">
-            Anggaran Rumah Tangga Serikat Pekerja Kampus
+        <div class="card-header border-left-primary">
+            AD-ART Serikat Pekerja Kampus
         </div>
         <div class="card-body">
-            <h5 class="card-title">Anggaran Rumah Tangga</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <iframe src="<?= site_url('pdfviewer'); ?>" style="width: 100%; height: 800px; border: none;"></iframe>
         </div>
     </div>
 </div>

@@ -22,7 +22,6 @@ class User extends CI_Controller
         // Ambil data iuran sesuai dengan nilai gaji dari tabel "user_iuran"
         $data['iuran'] = $this->db->get_where('user_iuran', ['gaji' => $gaji])->row_array();
 
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -43,7 +42,17 @@ class User extends CI_Controller
             $this->load->view('user/edit', $data);
             $this->load->view('templates/footer');
         } else {
-            $name = $this->input->post('name');
+            $update = [
+                'name' => $this->input->post('name', true),
+                'kampus' => $this->input->post('kampus', true),
+                'prodi' => $this->input->post('prodi', true),
+                'gender' => $this->input->post('gender'),
+                'alamat' => $this->input->post('alamat', true),
+                'telp' => $this->input->post('telp', true),
+                'status' => $this->input->post('status', true),
+                'employer' => $this->input->post('employer', true),
+                'gaji' => $this->input->post('gaji', true)
+            ];
             $email = $this->input->post('email');
 
             //gambar yang diupload
@@ -67,11 +76,11 @@ class User extends CI_Controller
                 }
             }
 
-            $this->db->set('name', $name);
+            $this->db->set($update);
             $this->db->where('email', $email);
             $this->db->update('user');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil anda berhasil diubah!</div>');
-            redirect('user');
+            redirect('user/edit');
         }
     }
 
@@ -134,6 +143,8 @@ class User extends CI_Controller
     {
         $data['title'] = 'AD-ART';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Memuat tampilan PDF Viewer
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -241,5 +252,18 @@ class User extends CI_Controller
                 }
             }
         }
+    }
+
+    public function informasi()
+    {
+        $data['title'] = 'Informasi Serikat';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/informasi', $data);
+        $this->load->view('templates/footer');
     }
 }

@@ -15,6 +15,16 @@ class Admin extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        // Mengambil jumlah total pengguna (user)
+        $data['total_users'] = $this->db->count_all('user');
+
+        // Mengambil data gender
+        $data['male_count'] = $this->db->where('gender', 'laki-laki')->count_all_results('user');
+        $data['female_count'] = $this->db->where('gender', 'perempuan')->count_all_results('user');
+
+        // Mengambil data gaji
+        $data['salary_data'] = $this->db->select('gaji, COUNT(*) as count')->group_by('gaji')->get('user')->result_array();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

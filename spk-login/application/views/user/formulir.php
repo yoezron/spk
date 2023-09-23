@@ -33,10 +33,10 @@
                         <div class="form-group">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="radio mx-1" id="gender" name="gender" value="laki-laki">Laki-laki
+                                    <input type="radio" class="radio mx-1" id="gender" name="gender" value="laki-laki" <?php if ($user['gender'] === 'laki-laki') echo 'checked'; ?>>Laki-laki
                                 </label>
                                 <label class="form-check-label">
-                                    <input type="radio" class="radio mx-1" id="gender" name="gender" value="perempuan">Perempuan
+                                    <input type="radio" class="radio mx-1" id="gender" name="gender" value="perempuan" <?php if ($user['gender'] === 'perempuan') echo 'checked'; ?>>Perempuan
                                 </label>
                             </div>
                         </div>
@@ -75,11 +75,14 @@
                             <select class="form-control col-sm-8" id="status" name="status" value="<?= $user['status']; ?>">
                                 <option><?= $user['status']; ?></option>
                                 <option>Dosen PNS</option>
+                                <option>PPPK</option>
                                 <option>Dosen Tetap Non PNS</option>
                                 <option>Dosen Tidak Tetap/Honorer</option>
+                                <option>Dosen Kontrak</option>
                                 <option>Tendik PNS</option>
                                 <option>Tendik Tetap Non PNS</option>
                                 <option>Tendik Tidak Tetap/Honorer</option>
+                                <option>Tendik Kontrak</option>
                                 <option>Outsourcing</option>
                             </select>
                         </div>
@@ -89,11 +92,12 @@
                         <div class="col-sm-8">
                             <select class="form-control col-sm-6" id="employer" name="employer" value="<?= $user['employer']; ?>">
                                 <option><?= $user['employer']; ?></option>
-                                <option>Kampus</option>
-                                <option>Tetap</option>
-                                <option>Tenaga Kontrak</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>Kementerian Pendidikan/APBN</option>
+                                <option>Kementerian Agama/APBN</option>
+                                <option>APBD/PEMDA</option>
+                                <option>YAYASAN</option>
+                                <option>KAMPUS</option>
+                                <option>PENYEDIA JASA/OUTSOURCING</option>
                             </select>
                         </div>
                     </div>

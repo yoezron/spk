@@ -10,15 +10,126 @@
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>/img/logo/favicon.png" />
-
-
+    <link rel="stylesheet" href="http://localhost/spkampus/assets/css/font-awesome-pro.css" />
 </head>
+<!-- preloader -->
+<div id="preloader">
+    <div class="preloader">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- preloader end  -->
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+<!-- back-to-top-start  -->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <i class="fas fa-angle-double-up"></i>
+</button>
+<!-- back-to-top-end  -->
+
+<!-- search popup start -->
+<div class="search__popup">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-12">
+                <div class="search__wrapper">
+                    <div class="search__top d-flex justify-content-between align-items-center">
+                        <div class="search__logo">
+                            <a href="index.html">
+                                <img src="http://localhost/spkampus/assets/img/logo/footer-1.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="search__close">
+                            <button type="button" class="search__close-btn search-close-btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="search__form">
+                        <form action="#">
+                            <div class="search__input">
+                                <input class="search-input-field" type="text" placeholder="Type here to search..." />
+                                <span class="search-focus-border"></span>
+                                <button type="submit">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- search popup end -->
+
+<!-- tp-offcanvus-area-start -->
+<div class="tpoffcanvas-area">
+    <div class="tpoffcanvas">
+        <div class="tpoffcanvas__close-btn">
+            <button class="close-btn"><i class="fal fa-times"></i></button>
+        </div>
+        <div class="tpoffcanvas__logo">
+            <a href="index.html">
+                <img src="http://localhost/spkampus/assets/img/logo/footer-1.png" alt="" />
+            </a>
+        </div>
+        <div class="tpoffcanvas__title">
+            <p>Serikat Pekerja Kampus.
+                Serikat pekerja yang mewadahi pekerja di bidang/sektor pendidikan tinggi.</p>
+        </div>
+        <div class="tp-main-menu-mobile d-xl-none"></div>
+        <div class="tpoffcanvas__contact-info">
+            <div class="tpoffcanvas__contact-title">
+                <h5>Kontak Kami</h5>
+            </div>
+            <ul>
+                <li>
+                    <i class="fa-light fa-location-dot"></i>
+                    <a href="https://goo.gl/maps/VvNUTxj4nGtXT7ae6" target="_blank">Jakarta, Indonesia.</a>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:serikatpekerjakampus@gmail.com">serikatpekerjakampus@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fal fa-phone-alt"></i>
+                    <a href="https://api.whatsapp.com/send?phone=6287819531788&text=Salam%20perjuangan!">+6287819531788</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tpoffcanvas__input">
+            <div class="tpoffcanvas__input-title">
+                <h4>Dapatkan Pembaruan</h4>
+            </div>
+            <form action="mailto:serikatpekerjakampus@gmail.com">
+                <div class="p-relative">
+                    <input type="text" placeholder="Masukkan Email" />
+                    <button>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="tpoffcanvas__social">
+            <div class="social-icon">
+                <a href="https://twitter.com/pekerjakampus"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/serikatpekerjakampus/"><i class="fab fa-instagram"></i></a>
+                <a href="http://facebook.com/serikatpekerjakampus"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body-overlay"></div>
+<!-- tp-offcanvus-area-end -->
+
 
 <title>Serikat Pekerja Kampus - Masuk</title>
 <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>/img/logo/favicon.png" />
@@ -32,10 +143,10 @@
                         <li><span>Berjuang bersama kami</span></li>
                         <li>
                             <div class="tp-header-top-3__social">
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="http://facebook.com/serikatpekerjakampus"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/serikatpekerjakampus/"><i class="fab fa-instagram"></i></a>
+                                <a href="https://twitter.com/pekerjakampus"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-tiktok"></i></a>
                             </div>
                         </li>
                     </ul>
@@ -72,26 +183,18 @@
                     <nav class="tp-main-menu-content">
                         <ul>
                             <li class="has-dropdown">
-                                <a href="index.html">Beranda</a>
+                                <a href="http://localhost/spkampus/index.html">Beranda</a>
                             </li>
                             <li class="has-dropdown">
                                 <a href="#">Tentang Kami</a>
                                 <ul class="submenu tp-submenu">
-                                    <li><a href="about-us.html">Struktur</a></li>
-                                    <li><a href="team.html">Anggota</a></li>
-                                    <li><a href="team-details.html">Team Details</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="http://localhost/spkampus/about-us.html">Struktur</a></li>
+                                    <li><a href="http://localhost/spkampus/spk-login/auth">Sejarah</a></li>
                                     <li><a href="http://localhost/spkampus/spk-login/auth">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="error.html">Error</a></li>
+                                    <li><a href="http://localhost/spkampus/spk-login/auth/registration">Registrasi Anggota</a></li>
                                 </ul>
                             </li>
-                            <li class="has-dropdown">
+                            <!-- <li class="has-dropdown">
                                 <a href="donation-details.html">Donasi</a>
                                 <ul class="submenu tp-submenu">
                                     <li><a href="donation-1.html">Donation 01</a></li>
@@ -106,16 +209,16 @@
                                     <li><a href="event.html">Event</a></li>
                                     <li><a href="evant-details.html">Event Details</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <li class="has-dropdown">
-                                <a href="blog-details.html">Berita</a>
+                                <a href="#">Berita</a>
                                 <ul class="submenu tp-submenu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                    <li><a href="https://tekno.tempo.co/read/1761526/serikat-pekerja-kampus-resmi-dibentuk-ini-tujuan-pendiriannya">Berita SPK</a></li>
+                                    <li><a href="https://indoprogress.com/2023/09/pendirian-serikat-pekerja-kampus/">Pendirian SPK</a></li>
+                                    <li><a href="https://trimurti.id/kabar-perlawanan/serikat-pekerja-kampus-milik-seluruh-pekerja-kampus/">SPK Milik Semua</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Kontak</a></li>
+                            <li><a href="http://localhost/spkampus/contact.html">Kontak</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -161,22 +264,14 @@
                         <div class="tp-breadcrumb__list">
                             <span><a href="index.html">home</a></span>
                             <span class="dvdr"><i class="fa-sharp fa-solid fa-slash-forward"></i></span>
-                            <span>Login Page</span>
+                            <span>Bergabung</span>
                         </div>
-                        <h3 class="tp-breadcrumb__title">Login Page</h3>
+                        <h3 class="tp-breadcrumb__title">Gabung Serikat</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- breadcrumb-area-end -->
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url('assets/') ?>/css/style.css" />
 
     <body class="bg-gradient-primary white-bg">
