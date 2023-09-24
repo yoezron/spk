@@ -18,6 +18,9 @@
             <button href="" type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newBayar">
                 Tambah Pembayaran
             </button>
+
+            <h1><strong>Jumlah Saldo: Rp.<?= number_format($total_bayar, 2, ',', '.');   ?></strong></h1>
+
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -34,7 +37,7 @@
                             <th scope="row"><?= $i;  ?></th>
                             <td><?= date('d F Y', $pb['date_created']); ?></td>
                             <td><?= $pb['name']; ?></td>
-                            <td><?= $pb['jumlah']; ?></td>
+                            <td>Rp.<?= number_format($pb['jumlah'], 2, ',', '.'); ?></td>
                             <td>
                                 <button href="" type="button" class="btn btn-warning">edit</button>
 

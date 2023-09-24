@@ -290,6 +290,8 @@ class User extends CI_Controller
         $data['title'] = 'Pembayaran Anggota';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        $this->load->model('User_model');
+        $data['total_bayar'] = $this->User_model->saldo();
         $data['pembayaran'] = $this->db->order_by('date_created', 'desc');
         $data['pembayaran'] = $this->db->get('user_bayar')->result_array();
         $data['member'] = $this->db->get('user')->result_array();
@@ -312,5 +314,10 @@ class User extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pembayaran Berhasil Ditambahkan!</div>');
             redirect('user/bayar');
         }
+    }
+
+    public function Pdf_Viewer()
+    {
+        $this->load->view('user/pdf_viewer');
     }
 }

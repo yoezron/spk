@@ -38,4 +38,15 @@ class User_model extends CI_Model
     {
         return $this->db->get_where('user', ['id' => $id])->row_array();
     }
+
+    public function saldo()
+    {
+        $this->db->select_sum('jumlah');
+        $query = $this->db->get('user_bayar');
+        if ($query->num_rows() > 0) {
+            return $query->row()->jumlah;
+        } else {
+            return 0;
+        }
+    }
 }

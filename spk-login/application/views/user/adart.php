@@ -10,7 +10,7 @@
             AD-ART Serikat Pekerja Kampus
         </div>
         <div class="card-body">
-            <iframe src="<?= site_url('pdfviewer'); ?>" style="width: 100%; height: 800px; border: none;"></iframe>
+            <iframe src="<?= base_url('user/pdf_viewer'); ?>" style="width: 100%; height: 800px; border: none;"></iframe>
         </div>
     </div>
 </div>
