@@ -16,10 +16,12 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         // Mengambil jumlah total pengguna (user)
-        $data['total_users'] = $this->db->count_all('user');
+        $data['total_users'] = $this->db->where('role_id !=', 2)->count_all_results('user');
 
         // Mengambil data gender
+        $data['male_count'] = $this->db->where('role_id =', 6);
         $data['male_count'] = $this->db->where('gender', 'laki-laki')->count_all_results('user');
+        $data['female_count'] = $this->db->where('role_id =', 6);
         $data['female_count'] = $this->db->where('gender', 'perempuan')->count_all_results('user');
 
         // Mengambil data gaji
@@ -89,6 +91,7 @@ class Admin extends CI_Controller
         $this->load->model('User_model', 'userm');
 
         $data['member'] = $this->userm->getMemberRole();
+        $this->db->where('role_id !=', 1);
         $data['member'] = $this->db->get('user')->result_array();
 
         $this->load->view('templates/header', $data);
@@ -96,5 +99,13 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/member', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function hapus($id)
+    {
+        $where = array('id' => $id);
+        $this->load->model('Admin_model'); // Memuat model Admin_model
+        $this->Admin_model->hapus_data($where, 'user');
+        redirect('admin/member');
     }
 }

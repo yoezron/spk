@@ -184,6 +184,7 @@ class User extends CI_Controller
 
         $this->db->where('role_id =', 2);
         $data['member'] = $this->db->get('user')->result_array();
+        $this->db->where('role_id !=', 1);
         $this->db->where('role_id !=', 2);
         $data['active'] = $this->db->get('user')->result_array();
 

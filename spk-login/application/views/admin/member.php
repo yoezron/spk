@@ -14,9 +14,6 @@
             <?php endif; ?>
 
             <?= $this->session->flashdata('message'); ?>
-            <button href="" type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMemberModal">
-                Tambah Member
-            </button>
 
             <table class="table table-hover">
                 <thead>
@@ -39,11 +36,7 @@
                             <td><?= $me['email']; ?></td>
                             <td><?= $me['kampus']; ?></td>
                             <td><?= $me['role_id']; ?></td>
-                            <td>
-                                <button href="" type="button" class="btn btn-success">edit</button>
-                                <button href="" type="button" class="btn btn-danger">delete</button>
-
-                            </td>
+                            <td><?= anchor(base_url('admin/hapus/' . $me['id']), '<button type="button" class="btn btn-danger">hapus</button>') ?></td>
                             <?php $i++; ?>
                         <?php endforeach; ?>
                         </tr>

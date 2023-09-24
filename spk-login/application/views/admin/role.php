@@ -30,8 +30,6 @@
                             <td><?= $r['role']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" type="button" class="btn btn-warning">akses</a>
-                                <button href="" type="button" class="btn btn-success">edit</button>
-                                <button href="" type="button" class="btn btn-danger">delete</button>
 
                             </td>
                             <?php $i++; ?>
