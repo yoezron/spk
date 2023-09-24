@@ -33,4 +33,9 @@ class User_model extends CI_Model
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anggota berhasil dikonfirmasi!</div>');
     }
+
+    public function getUserById($id)
+    {
+        return $this->db->get_where('user', ['id' => $id])->row_array();
+    }
 }

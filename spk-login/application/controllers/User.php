@@ -182,7 +182,9 @@ class User extends CI_Controller
         $data['title'] = 'Konfirmasi Calon Anggota';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+
         $this->db->where('role_id =', 2);
+        $data['member'] = $this->db->order_by('date_created', 'desc');
         $data['member'] = $this->db->get('user')->result_array();
         $this->db->where('role_id !=', 1);
         $this->db->where('role_id !=', 2);
@@ -266,5 +268,49 @@ class User extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/informasi', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function detail($id)
+    {
+        $data['title'] = 'Rincian Anggota';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('User_model');
+        $data['active'] = $this->User_model->getUserById($id);
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/detail', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function bayar()
+    {
+        $data['title'] = 'Pembayaran Anggota';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['pembayaran'] = $this->db->order_by('date_created', 'desc');
+        $data['pembayaran'] = $this->db->get('user_bayar')->result_array();
+        $data['member'] = $this->db->get('user')->result_array();
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/bayar', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'date_created' => time(),
+                'bulan' => $this->input->post('bulan'),
+                'name' => $this->input->post('name'),
+                'jumlah' => $this->input->post('jumlah'),
+            ];
+            $this->db->insert('user_bayar', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pembayaran Berhasil Ditambahkan!</div>');
+            redirect('user/bayar');
+        }
     }
 }

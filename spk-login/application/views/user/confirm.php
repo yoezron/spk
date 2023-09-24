@@ -64,6 +64,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Asal Kampus</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Rincian</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,7 @@
                             <td><?= $ac['email']; ?></td>
                             <td><?= $ac['kampus']; ?></td>
                             <td>Anggota</td>
+                            <td><a href="<?= base_url(); ?>user/detail/<?= $ac['id']; ?>" class="badge badge-primary float-right">Rincian</a></td>
                             <td>
 
                             </td>
