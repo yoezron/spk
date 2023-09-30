@@ -6,37 +6,39 @@
 
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('message'); ?>
             <button href="" type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRoleModal">
                 Tambah Peran
             </button>
+            <div class="table-responsive">
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Peran</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($role as $r) : ?>
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i;  ?></th>
-                            <td><?= $r['role']; ?></td>
-                            <td>
-                                <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" type="button" class="btn btn-warning">akses</a>
-
-                            </td>
-                            <?php $i++; ?>
-                        <?php endforeach; ?>
+                            <th scope="col">#</th>
+                            <th scope="col">Peran</th>
+                            <th scope="col">Action</th>
                         </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($role as $r) : ?>
+                            <tr>
+                                <th scope="row"><?= $i;  ?></th>
+                                <td><?= $r['role']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" type="button" class="btn btn-warning">akses</a>
+
+                                </td>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

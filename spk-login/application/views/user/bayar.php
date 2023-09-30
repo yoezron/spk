@@ -20,33 +20,34 @@
             </button>
 
             <h1><strong>Jumlah Saldo: Rp.<?= number_format($total_bayar, 2, ',', '.');   ?></strong></h1>
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Nama Anggota</th>
-                        <th scope="col">Jumlah Pembayaran</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($pembayaran as $pb) : ?>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i;  ?></th>
-                            <td><?= date('d F Y', $pb['date_created']); ?></td>
-                            <td><?= $pb['name']; ?></td>
-                            <td>Rp.<?= number_format($pb['jumlah'], 2, ',', '.'); ?></td>
-                            <td>
-                                <button href="" type="button" class="btn btn-warning">edit</button>
-
-                            </td>
-                            <?php $i++; ?>
-                        <?php endforeach; ?>
+                            <th scope="col">#</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Nama Anggota</th>
+                            <th scope="col">Jumlah Pembayaran</th>
                         </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($pembayaran as $pb) : ?>
+                            <tr>
+                                <th scope="row"><?= $i;  ?></th>
+                                <td><?= date('d F Y', $pb['date_created']); ?></td>
+                                <td><?= $pb['name']; ?></td>
+                                <td>Rp.<?= number_format($pb['jumlah'], 2, ',', '.'); ?></td>
+                                <td>
+                                    <button href="" type="button" class="btn btn-warning">edit</button>
+
+                                </td>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@
 
 
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg">
             <?php if (validation_errors()) : ?>
                 <div class="alert alert-danger" role="alert">
                     <?= validation_errors(); ?>
@@ -14,34 +14,36 @@
             <?php endif; ?>
 
             <?= $this->session->flashdata('message'); ?>
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nomor Anggota</th>
-                        <th scope="col">Nama Member</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Asal Kampus</th>
-                        <th scope="col">Peran</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($member as $me) : ?>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i;  ?></th>
-                            <td><?= $me['date_created']; ?></td>
-                            <td><?= $me['name']; ?></td>
-                            <td><?= $me['email']; ?></td>
-                            <td><?= $me['kampus']; ?></td>
-                            <td><?= $me['role_id']; ?></td>
-                            <td><?= anchor(base_url('admin/hapus/' . $me['id']), '<button type="button" class="btn btn-danger">hapus</button>') ?></td>
-                            <?php $i++; ?>
-                        <?php endforeach; ?>
+                            <th scope="col">#</th>
+                            <th scope="col">Nomor Anggota</th>
+                            <th scope="col">Nama Member</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Asal Kampus</th>
+                            <th scope="col">Peran</th>
                         </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($member as $me) : ?>
+                            <tr>
+                                <th scope="row"><?= $i;  ?></th>
+                                <td><?= $me['date_created']; ?></td>
+                                <td><?= $me['name']; ?></td>
+                                <td><?= $me['email']; ?></td>
+                                <td><?= $me['kampus']; ?></td>
+                                <td><?= $me['role_id']; ?></td>
+                                <td><?= anchor(base_url('admin/hapus/' . $me['id']), '<button type="button" class="btn btn-danger">hapus</button>') ?></td>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                            </tr>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 

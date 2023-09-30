@@ -106,18 +106,22 @@
                         <div class="col-sm-8">
                             <select class="form-control col-sm-8" id="gaji" name="gaji" value="<?= $user['gaji']; ?>">
                                 <option><?= $user['gaji']; ?></option>
-                                <option>
-                                    < Rp.1.000.000,-</option>
-                                <option>Rp.1.000.000 - Rp.1.500.000</option>
-                                <option>Rp.1.500.000 - Rp.2.000.000</option>
-                                <option>Rp.2.000.000 - Rp.2.500.000</option>
-                                <option>Rp.2.500.000 - Rp.3.000.000</option>
-                                <option>Rp.3.000.000 - Rp.3.500.000</option>
-                                <option>Rp.3.500.000 - Rp.4.000.000</option>
-                                <option>> Rp.4.000.000</option>
+                                <optgroup label="Pegawai Negeri Sipil">
+                                    <option>Golongan I (Ia, Ib, Ic, Id)</option>
+                                    <option>Golongan II (IIa, IIb, IIc, IId)</option>
+                                    <option>Golongan III (IIIa, IIIb, IIIc, Id)</option>
+                                    <option>Golongan IV (IVa, IVb, IVc, IVd, IVe)</option>
+                                </optgroup>
+                                <optgroup label="Non-Pegawai Negeri Sipil">
+                                    <option>Rp0 - Rp1,500,000</option>
+                                    <option>Rp1,500,000 - Rp3,000,000</option>
+                                    <option>Rp3,000,001 - Rp6,000,000</option>
+                                    <option>Diatas Rp.6,000,000</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <div class="col-sm-2 mt-5">Foto</div>
                         <div class="col-sm-10">

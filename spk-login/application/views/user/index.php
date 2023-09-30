@@ -34,9 +34,10 @@
                 <p class="card-text">Bank Syariah Indonesia (BSI)</p>
                 <p class="card-text"><b>No.Rek: 706 068 7875</b></p>
                 <p class="card-text">a.n. Rr. Diah Asih Purwaningrum</p>
-                <a href="https://api.whatsapp.com/send?phone=61402096486&text=Salam%20perjuangan!%20Saya%20<?= $user['name']; ?>,%20telah%20melakukan%20pembayaran%20Iuran%20Anggota%20SPK!" target="_blank" class="btn btn-primary">Konfirmasi Pembayaran</a>
+                <a href="https://api.whatsapp.com/send?phone=61402096486&text=Salam%20perjuangan!%20Saya%20<?= $user['name']; ?>,%20telah%20melakukan%20pembayaran%20Iuran%20Anggota%20SPK,%20sebesar%20<?= $iuran['iuran']; ?>" target="_blank" class="btn btn-primary">Konfirmasi Pembayaran</a>
+                <a class="btn btn-danger mt-3" href="https://api.whatsapp.com/send?phone=61402096486&text=Salam%20perjuangan!%20Saya%20<?= $user['name']; ?>,%20menyatakan%20keberatan%20membayar%20Iuran%20Anggota%20SPK,%20sebesar%20<?= $iuran['iuran']; ?>.%20Mohon%20kebijaksanaannya!" target="_blank" class="btn btn-primary">Ajukan Keberatan</a>
             <?php } else { ?>
-                <p class="card-text">Data iuran tidak ditemukan.</p>
+                <p class="card-text">Data iuran tidak ditemukan. Silakan mengisi formulir pendaftaran terlebih dahulu!</p>
             <?php } ?>
         </div>
     </div>
