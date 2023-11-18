@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"> Salam Perjuangan <?= $user['name']; ?> !</h1>
-    <div class="card mx-auto" style="width: 75rem;">
+    <div class="card mx-auto" style="max-width: 100%;">
         <img src="<?= base_url('assets/img/breadcrumb/') . 'breadcrumb-bg.png' ?>" class="card-img-top" alt="...">
         <div class="card-body text-justify mx-5 lh-sm">
             <h5 class="card-title text-center" style="font-weight:bold">Manifesto Serikat Pekerja Kampus</h5>

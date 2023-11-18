@@ -25,12 +25,13 @@
         </div>
     </div>
     <div class="card" style="width: 18rem;">
-        <img src="<?= base_url('assets/img/qr/confirm.png') ?>" class="card-img-top">
+        <!-- Tambahkan id pada gambar untuk mengidentifikasinya -->
+        <img id="gambarModal" src="<?= base_url('assets/img/qr/confirm.png') ?>" class="card-img-top" data-toggle="modal" data-target="#myModal">
         <div class="card-body">
             <h5 class="card-title"><b>Pembayaran Iuran Anggota</b></h5>
             <?php if (isset($iuran) && !empty($iuran)) { ?>
-                <p>Jumlah Iuran: <?= $iuran['iuran']; ?> /bulan</p>
-                <p class="card-text">Pembayaran iuran dapat di transfer melalui:</p>
+                <p>Jumlah Iuran: <strong><?= $iuran['iuran']; ?> /bulan</strong></p>
+                <p class="card-text">Pembayaran iuran dapat melalui QRIS di atas atau transfer melalui:</p>
                 <p class="card-text">Bank Syariah Indonesia (BSI)</p>
                 <p class="card-text"><b>No.Rek: 706 068 7875</b></p>
                 <p class="card-text">a.n. Rr. Diah Asih Purwaningrum</p>
@@ -41,10 +42,32 @@
             <?php } ?>
         </div>
     </div>
-
-
 </div>
-<!-- /.container-fluid -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"> Silakan Scan Disini Untuk Membayar Iuran
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <!-- Gambar yang diperbesar akan ditampilkan di sini -->
+                <img src="<?= base_url('assets/img/qr/confirm.png') ?>" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tambahkan JavaScript Bootstrap jika belum ada -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+
 
 </div>
 <!-- End of Main Content -->
