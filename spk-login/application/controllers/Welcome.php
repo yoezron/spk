@@ -21,10 +21,13 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('templates/topbar');
-		$this->load->view('templates/adart');
-		$this->load->view('templates/footer');
+		$this->load->view('page/head');
+		$this->load->view('page/preloader');
+		$this->load->view('page/header');
+		$this->load->view('page/popup');
+		$this->load->view('page/offcanvus');
+		$this->load->view('page/main');
+		$this->load->view('page/footer');
+		$this->load->view('page/js');
 	}
 }

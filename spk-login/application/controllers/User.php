@@ -261,7 +261,7 @@ class User extends CI_Controller
     {
         $data['title'] = 'Informasi Serikat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
+        $data['recent_information'] = $this->db->order_by('id', 'DESC')->get('info')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -319,5 +319,78 @@ class User extends CI_Controller
     public function Pdf_Viewer()
     {
         $this->load->view('user/pdf_viewer');
+    }
+
+    public function addinfo()
+    {
+        $data['title'] = 'Tambah Informasi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('info_message', 'Informasi', 'required');
+        $data['recent_information'] = $this->db->order_by('id', 'DESC')->get('info')->result_array();
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/addinfo', $data);
+            $this->load->view('templates/footer');
+        } else {
+            // Ambil informasi dari form
+            $info_message = $this->input->post('info_message');
+
+            // Proses upload file jika dibutuhkan
+            $upload_file = $_FILES['info_file']['name'];
+            $file_name = ''; // Inisialisasi nama file
+            if ($upload_file) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['upload_path'] = './assets/img/info/'; // Sesuaikan dengan path penyimpanan file
+                $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobita)
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('info_file')) {
+                    $file_info = $this->upload->data();
+                    $file_name = $file_info['file_name'];
+                } else {
+                    $error = $this->upload->display_errors();
+                    // Tampilkan pesan error jika upload gagal
+                    // Misalnya: echo $error;
+                }
+            }
+            $info_title = $this->input->post('info_title');
+            // Simpan informasi ke dalam database
+            $insert_data = array(
+                'judul' => $info_title,
+                'info' => $info_message,
+                'gambar' => $file_name,
+                // Sesuaikan dengan field lain yang ada di tabel database
+            );
+
+            $this->db->insert('info', $insert_data); // Sesuaikan dengan nama tabel database
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi berhasil disimpan!</div>');
+            redirect('user/addinfo');
+            // Redirect atau tampilkan pesan sukses
+            // Misalnya: redirect('nama_controller/nama_method_lain');
+        }
+    }
+    public function deleteinfo()
+    {
+        $info_id = $this->input->post('info_id');
+
+        // Ambil nama file gambar berdasarkan ID sebelum menghapus dari database
+        $info = $this->db->get_where('info', ['id' => $info_id])->row_array();
+        $file_path = './assets/img/info/' . $info['gambar'];
+
+        // Hapus file gambar jika ada
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+
+        // Hapus data dari database berdasarkan ID
+        $this->db->where('id', $info_id);
+        $this->db->delete('info');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi berhasil dihapus!</div>');
+        redirect('user/addinfo');
     }
 }

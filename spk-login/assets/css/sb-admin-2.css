@@ -11742,3 +11742,10 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
 	width: 100%;
 }
+
+.card-text {
+	font-size: 14px;
+	color: #333; /* Warna teks */
+	text-align: justify;
+	/* ... tambahkan gaya CSS lainnya sesuai kebutuhan ... */
+}

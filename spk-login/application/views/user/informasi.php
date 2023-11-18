@@ -13,6 +13,36 @@
             <p class="card-text">Selamat datang anggota serikat! Ini adalah halaman untuk informasi terkini mengenai kegiatan dan agenda Serikat Pekerja Kampus.</p>
         </div>
     </div>
+    <div>
+        <!-- Menampilkan Recent Information sebagai Card -->
+        <div class="row mt-4">
+            <div class="col-lg-10">
+                <h2>Informasi Terakhir</h2>
+                <?php foreach ($recent_information as $info) : ?>
+                    <div class="card mb-3" style="max-width: auto;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <!-- Jika ada gambar yang disimpan -->
+                                <?php if ($info['gambar']) : ?>
+                                    <img src="<?= base_url('assets/img/info/' . $info['gambar']); ?>" class="img-fluid rounded-start" alt="Info Image">
+                                <?php else : ?>
+                                    <!-- Jika tidak ada gambar -->
+                                    <img src="<?= base_url('assets/img/default_info_image.jpg'); ?>" class="img-fluid rounded-start" alt="Info Image">
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h3 class="card-title-info"><?= $info['judul']; ?></h3>
+                                    <p class="paragraph-style"><?= nl2br($info['info']); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- /.container-fluid -->
 
