@@ -22,9 +22,7 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
     <link rel="stylesheet" href="assets/css/meanmenu.css" />
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css" />
-    <link rel="stylesheet" href="assets/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/magnific-popup.css" />
     <link rel="stylesheet" href="assets/css/spacing.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-
 </head>

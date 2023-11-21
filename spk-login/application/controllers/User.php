@@ -393,4 +393,117 @@ class User extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi berhasil dihapus!</div>');
         redirect('user/addinfo');
     }
+    public function addPost()
+    {
+        $data['title'] = 'Tambah Tulisan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_posts'] = $this->db->get_where('posting', ['penulis' => $data['user']['name']])->result_array();
+
+        $this->form_validation->set_rules('judul_tulisan', 'Judul Tulisan', 'required');
+        $this->form_validation->set_rules('isi_tulisan', 'Isi Tulisan', 'required');
+        // Tambahkan aturan validasi lainnya sesuai kebutuhan, seperti untuk 'gambar' atau 'tag'
+
+        if ($this->form_validation->run() == false) {
+            // Jika validasi form gagal, tampilkan view form
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/addpost', $data);
+            $this->load->view('templates/footer');
+        } else {
+            // Ambil informasi dari form
+            $judul_tulisan = $this->input->post('judul_tulisan');
+            $isi_tulisan = $this->input->post('isi_tulisan');
+            $jenis_tulisan = $this->input->post('jenis_tulisan');
+            // Ambil nama penulis dari data user
+            $penulis = $data['user']['name']; // Sesuaikan dengan nama kolom yang menyimpan nama user
+
+            // Proses upload file jika dibutuhkan
+            $upload_file = $_FILES['gambar']['name'];
+            $file_name = ''; // Inisialisasi nama file
+            if ($upload_file) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['upload_path'] = './assets/img/posting/'; // Sesuaikan dengan path penyimpanan file
+                $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobita)
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('gambar')) {
+                    $file_info = $this->upload->data();
+                    $file_name = $file_info['file_name'];
+                } else {
+                    $error = $this->upload->display_errors();
+                    // Tampilkan pesan error jika upload gagal
+                    // Misalnya: echo $error;
+                }
+            }
+
+            // Simpan informasi ke dalam database
+            $insert_data = array(
+                'judul_tulisan' => $judul_tulisan,
+                'isi_tulisan' => $isi_tulisan,
+                'jenis_tulisan' => $jenis_tulisan,
+                'penulis' => $penulis,
+                'gambar' => $file_name,
+                'waktu_posting' => date('Y-m-d H:i:s'), // Tambahkan waktu posting saat ini
+                'tag' => $this->input->post('tag'), // Sesuaikan dengan nama kolom untuk tag
+                // Sesuaikan dengan field lain yang ada di tabel database
+            );
+
+            $this->db->insert('posting', $insert_data); // Sesuaikan dengan nama tabel database
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tulisan berhasil diposting!</div>');
+            redirect('user/addpost');
+            // Redirect atau tampilkan pesan sukses
+            // Misalnya: redirect('nama_controller/nama_method_lain');
+        }
+    }
+
+    public function delete_post($post_id)
+    {
+        // Ambil data postingan berdasarkan ID
+        $post = $this->db->get_where('posting', ['id' => $post_id])->row_array();
+
+        // Pastikan postingan ditemukan
+        if (!$post) {
+            // Tampilkan pesan bahwa postingan tidak ditemukan atau error handling lainnya
+            redirect('user/addPost'); // Ganti dengan halaman yang sesuai
+        }
+
+        // Hapus file gambar terkait jika ada
+        $gambar = $post['gambar'];
+        if ($gambar) {
+            $path = './assets/img/posting/' . $gambar;
+            if (file_exists($path)) {
+                unlink($path); // Menghapus file gambar
+            }
+        }
+
+        // Hapus postingan dari database
+        $this->db->where('id', $post_id);
+        $this->db->delete('posting');
+
+        // Tampilkan pesan bahwa postingan berhasil dihapus atau redirect ke halaman lain
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Postingan berhasil dihapus.</div>');
+        redirect('user/addPost'); // Ganti dengan halaman yang sesuai
+    }
+    public function updatePost($post_id)
+    {
+        $judul_tulisan = $this->input->post('edit_judul_tulisan');
+        $isi_tulisan = $this->input->post('edit_isi_tulisan');
+
+        // Lakukan validasi input jika diperlukan
+
+        $update_data = array(
+            'judul_tulisan' => $judul_tulisan,
+            'isi_tulisan' => $isi_tulisan,
+            // Tambahan field lain yang ingin diubah
+        );
+
+        $this->db->where('id', $post_id);
+        $this->db->update('posting', $update_data);
+
+        // Set flashdata atau tampilkan pesan sukses
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tulisan berhasil diperbarui!</div>');
+        redirect('user/addPost'); // Ganti dengan halaman yang sesuai
+    }
 }
