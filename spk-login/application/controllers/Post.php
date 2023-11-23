@@ -28,8 +28,24 @@ class Post extends CI_Controller
         $this->load->view('page/header');
         $this->load->view('page/popup');
         $this->load->view('page/offcanvus');
-        $this->load->view('post/view/all_posts', $data);
-        $this->load->view('page/footer');
-        $this->load->view('page/js');
+        $this->load->view('post/all_posts', $data);
+        $this->load->view('post/footer', $data);
+    }
+
+    public function view($post_id)
+    {
+
+        $data['post'] = $this->db->get_where('posting', ['id' => $post_id])->row_array();
+
+
+        if ($data['post']) {
+
+            $this->load->view('post/header', $data);
+            $this->load->view('post/view', $data);
+            $this->load->view('post/footer', $data);
+        } else {
+            // Jika postingan tidak ditemukan, tampilkan pesan atau lakukan penanganan lainnya
+            echo "Postingan tidak ditemukan";
+        }
     }
 }

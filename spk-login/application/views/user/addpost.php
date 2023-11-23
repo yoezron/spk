@@ -1,3 +1,4 @@
+<script src="<?= base_url('assets/ckeditor/ckeditor.js') ?>"></script>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -33,11 +34,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="validationTextarea" class="form-label">Isi Tulisan:</label>
-                            <textarea name="isi_tulisan" class="form-control" id="validationTextarea" placeholder="Tulis konten tulisan di sini" required></textarea>
+                            <textarea name="isi_tulisan" class="form-control" id="isi_tulisan" placeholder="Tulis konten tulisan di sini" rows="8" required></textarea>
                             <div class="invalid-feedback">
                                 Harap isi konten tulisan.
                             </div>
                         </div>
+
                         <div class="mb-3">
                             <label for="jenis_tulisan" class="form-label">Jenis Tulisan:</label>
                             <select class="form-select" name="jenis_tulisan" id="jenis_tulisan" required>
@@ -65,10 +67,21 @@
                             <button class="btn btn-primary" type="submit">Kirim Tulisan</button>
                         </div>
                     </form>
+
                     <div class="mt-3 mb-3">
                         <strong><span style="font-size: larger;">Tulisan Terakhir Anda:</span></strong>
                     </div>
 
+                    <?php
+                    // Fungsi untuk membandingkan waktu posting
+                    function compareTime($a, $b)
+                    {
+                        return strtotime($b['waktu_posting']) - strtotime($a['waktu_posting']);
+                    }
+
+                    // Mengurutkan $user_posts dari yang terbaru hingga terlama
+                    usort($user_posts, 'compareTime');
+                    ?>
                     <div>
                         <?php if (!empty($user_posts)) : ?>
                             <?php foreach ($user_posts as $posting) : ?>
@@ -134,3 +147,7 @@
 </div>
 </div>
 <!-- End of Main Content -->
+<script>
+    CKEDITOR.replace('isi_tulisan');
+    CKEDITOR.replace('edit_isi_tulisan');
+</script>

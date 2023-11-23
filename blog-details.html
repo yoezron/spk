@@ -341,28 +341,29 @@
       <!-- postbox area start -->
       <section class="postbox__area pt-120 pb-80">
         <div class="container">
-           <div class="row">
-              <div class="col-xxl-8 col-xl-8 col-lg-8">
-                 <div class="postbox__wrapper">
-                    <article class="postbox__item format-image mb-50 transition-3">
-                       <div class="postbox__thumb p-relative m-img">
-                           <div class="postbox__thumb-text d-none d-md-block">
-                              <span>08 April</span>
-                           </div>
-                          <img src="assets/img/blog/blog-details-1-1.jpg" alt="">
-                       </div>
-                       <div class="postbox__content">
-                          <div class="postbox__meta">
-                             <span><i class="flaticon-user"></i>By Poorex</span>
-                             <span><a href="#"><i class="flaticon-tag"></i>Shelter</a></span>
-                             <span><a href="#"><i class="flaticon-comment"></i>02 Comments</a></span>
-                          </div>
-                          <h3 class="postbox__title">Your Help Make Someone’s life Easier </h3>
-                          <div class="postbox__text">
-                                <p>Curabitur luctus euismod metus, eu pellentesque mauris tempus sit amet. Proin ante odio, posuere <br>id lacus auctor, elementum tempor tellus. Integer mattis justo eu enim tempus lacinia. Fusce vitae <br>enim diam. Ut commodo viverra magna non egestas. Integer sodales massa at odio tristique volutpat.<br>Proin posuere odio maximus, eleifend felis sed, ultrices turpis. Proin ultricies sodales nisl vel euismod. Praesent vestibulum sem lorem, eget fermentum justo iaculis et.</p>
-                                
-                                <p>vitae lobortis eros purus non augue. Nullam molestie augue diam, scelerisque porta dolor mollis a. <br>Cras condimentum elementum eros at finibus. pharetra condimentum sagittis. Donec consequat <br>velit et nisi scelerisque, quis iaculis felis tincidunt. In faucibus sapien ut elit hendrerit, et tristique <br>mauris lacinia. Phasellus tincidunt scelerisque lectus sed scelerisque. Donec at enim facilisis, <br>tempus nisi quis, pharetra enim</p>
-
+            <?php if ($post) : ?>
+            <div class="postbox__wrapper">
+                <article class="postbox__item format-image mb-50 mt-50 transition-3">
+                    <div class="postbox__thumb p-relative m-img">
+                        <img src="<?= base_url('assets/img/posting/' . $post['gambar']); ?>" alt="">
+                        <div class="postbox__thumb-text d-none d-md-block">
+                            <span><?= date('d F', strtotime($post['waktu_posting'])); ?></span>
+                        </div>
+                    </div>
+                    <div class="postbox__content">
+                        <div class="postbox__meta">
+                            <span><i class="flaticon-user"></i>By <?= $post['penulis']; ?></span>
+                            <!-- Pastikan $post['tag'] sesuai dengan tag yang ada -->
+                            <span><a href="#"><i class="flaticon-tag"></i><?= $post['tag']; ?></a></span>
+                            <!-- Jika perlu, tambahkan informasi komentar -->
+                            <!-- <span><a href="#"><i class="flaticon-comment"></i>02 Comments</a></span> -->
+                        </div>
+                        <h3 class="postbox__title"><?= $post['judul_tulisan']; ?></h3>
+                        <div class="postbox__text">
+                            <?= $post['isi_tulisan']; ?>
+                            <!-- Tambahkan elemen HTML sesuai dengan konten yang Anda inginkan -->
+                        </div>
+                        
                              <div class="postbox__blockquote p-relative">
                                 <div class="postbox__blockquote-shape">
                                    <img src="assets/img/blog/quote.png" alt="">
@@ -444,6 +445,9 @@
                           </div>
                         </div>
                     </article>
+                    <?php else : ?>
+                        <p>Postingan tidak ditemukan.</p>
+                    <?php endif; ?>
                     <div class="postbox__comment mb-50">
                        <h3 class="postbox__comment-title">03 Comments</h3>
                        <ul>
