@@ -47,15 +47,15 @@
                                 <nav class="tp-main-menu-content">
                                     <ul>
                                         <li class="has-dropdown">
-                                            <a href="index.html">Beranda</a>
+                                            <a href="http://spk.or.id/index.html">Beranda</a>
                                         </li>
                                         <li class="has-dropdown">
                                             <a href="#">Tentang Kami</a>
                                             <ul class="submenu tp-submenu">
                                                 <li><a href="about-us.html">Struktur</a></li>
-                                                <li><a href="http://localhost/spkampus/spk-login/auth">Sejarah</a></li>
-                                                <li><a href="http://localhost/spkampus/spk-login/auth">Login</a></li>
-                                                <li><a href="http://localhost/spkampus/spk-login/auth/registration">Registrasi Anggota</a></li>
+                                                <li><a href="http://spk.or.id/spkampus/spk-login/auth">Sejarah</a></li>
+                                                <li><a href="http://spk.or.id/spkampus/spk-login/auth">Login</a></li>
+                                                <li><a href="http://spk.or.id/spkampus/spk-login/auth/registration">Registrasi Anggota</a></li>
                                             </ul>
                                         </li>
                                         <!-- <li class="has-dropdown">
@@ -82,7 +82,7 @@
                                                 <li><a href="https://trimurti.id/kabar-perlawanan/serikat-pekerja-kampus-milik-seluruh-pekerja-kampus/">SPK Milik Semua</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Kontak</a></li>
+                                        <li><a href="http://spk.or.id/contact.html">Kontak</a></li>
                                         <li><a href="https://spk.or.id/spk-login/auth">Login</a></li>
                                     </ul>
                                 </nav>
@@ -94,12 +94,12 @@
                                     <li class="d-none d-xl-block">
                                         <div class="tp-header__icon-box">
                                             <button class="search-open-btn"><i class="flaticon-loupe"></i></button>
-                                            <a href="http://localhost/spkampus/spk-login/auth"><i class="flaticon-user"></i></a>
+                                            <a href="http://spk.or.id/spkampus/spk-login/auth"><i class="flaticon-user"></i></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="tp-header__btn d-none d-md-block">
-                                            <a class="tp-btn" href="http://localhost/spkampus/spk-login/auth/registration">Bergabung!</a>
+                                            <a class="tp-btn" href="http://spk.or.id/spkampus/spk-login/auth/registration">Bergabung!</a>
                                         </div>
                                     </li>
                                     <li>

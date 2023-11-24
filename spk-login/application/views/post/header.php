@@ -195,7 +195,7 @@
                                     <nav class="tp-main-menu-content">
                                         <ul>
                                             <li class="has-dropdown">
-                                                <a href="index.html">Beranda</a>
+                                                <a href="http://spk.or.id/index.html">Beranda</a>
                                             </li>
                                             <li class="has-dropdown">
                                                 <a href="#">Tentang Kami</a>
@@ -230,7 +230,7 @@
                                                     <li><a href="https://trimurti.id/kabar-perlawanan/serikat-pekerja-kampus-milik-seluruh-pekerja-kampus/">SPK Milik Semua</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Kontak</a></li>
+                                            <li><a href="http://spk.or.id/contact.html">Kontak</a></li>
                                         </ul>
                                     </nav>
                                 </div>

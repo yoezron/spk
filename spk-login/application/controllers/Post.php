@@ -34,7 +34,7 @@ class Post extends CI_Controller
 
     public function view($post_id)
     {
-
+        $data['all_posts'] = $this->db->get('posting')->result_array();
         $data['post'] = $this->db->get_where('posting', ['id' => $post_id])->row_array();
 
 

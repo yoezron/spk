@@ -51,7 +51,7 @@
                                             <!-- Tambahkan tombol untuk melihat detail posting -->
                                             <a href="<?= base_url('post/view/' . $post['id']); ?>">
                                                 <div class="tp-blog-2__link text-center">
-                                                    <span>Read More<i class="flaticon-arrow-right"></i></span>
+                                                    <span>Baca Postingan<i class="flaticon-arrow-right"></i></span>
                                                 </div>
                                             </a>
                                         </div>
