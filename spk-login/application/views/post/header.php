@@ -200,7 +200,7 @@
                                             <li class="has-dropdown">
                                                 <a href="#">Tentang Kami</a>
                                                 <ul class="submenu tp-submenu">
-                                                    <li><a href="about-us.html">Struktur</a></li>
+                                                    <li><a href="http://spk.or.id/about-us.html">Struktur</a></li>
                                                     <li><a href="http://spk.or.id/spk-login/auth">Sejarah</a></li>
                                                     <li><a href="http://spk.or.id/spk-login/auth">Login</a></li>
                                                     <li><a href="http://spk.or.id/spk-login/auth/registration">Registrasi Anggota</a></li>
@@ -223,8 +223,9 @@
                           </ul>
                         </li> -->
                                             <li class="has-dropdown">
-                                                <a href="#">Berita</a>
+                                                <a href="/spk-login/Post#">Berita</a>
                                                 <ul class="submenu tp-submenu">
+                                                    <li><a href="/spk-login/Post#">Tulisan Anggota</a></li>
                                                     <li><a href="https://tekno.tempo.co/read/1761526/serikat-pekerja-kampus-resmi-dibentuk-ini-tujuan-pendiriannya">Berita SPK</a></li>
                                                     <li><a href="https://indoprogress.com/2023/09/pendirian-serikat-pekerja-kampus/">Pendirian SPK</a></li>
                                                     <li><a href="https://trimurti.id/kabar-perlawanan/serikat-pekerja-kampus-milik-seluruh-pekerja-kampus/">SPK Milik Semua</a></li>

@@ -395,7 +395,7 @@ class User extends CI_Controller
     }
     public function addPost()
     {
-        $data['title'] = 'Tambah Tulisan';
+        $data['title'] = 'Kirim Tulisan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['user_posts'] = $this->db->get_where('posting', ['penulis' => $data['user']['name']])->result_array();
 
@@ -505,5 +505,17 @@ class User extends CI_Controller
         // Set flashdata atau tampilkan pesan sukses
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tulisan berhasil diperbarui!</div>');
         redirect('user/addPost'); // Ganti dengan halaman yang sesuai
+    }
+
+    public function kartu()
+    {
+        $data['title'] = 'Kartu Anggota';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/kartu', $data);
+        $this->load->view('templates/footer', $data);
     }
 }
