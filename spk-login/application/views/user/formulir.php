@@ -149,34 +149,67 @@
         </div>
         <!-- /.container-fluid -->
         <div class="card border-success">
-            <div class="card-header bg-success text-white" style="font-weight:bold">
-                Manfaat
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" onclick="changePage('Manfaat')">Manfaat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="changePage('FAQ')">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="changePage('AD-ART')">AD-ART</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <iframe id="pageFrame" src="<?= base_url('user/manfaat'); ?>" style="width: 100%; height: 800px; border: none;"></iframe>
+                </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title" style="font-weight:bold">Manfaat Keanggotaan</h5>
-                <p class="card-text">Menjadi anggota Serikat Pekerja Kampus (SPK) adalah kontribusi penting pekerja kampus untuk memperjuangkan kesejahteraan yang layak dan membangun kondisi kerja yang baik. SPK adalah ruang perjuangan bersama bagi dosen, peneliti, tenaga kependidikan, seluruh pekerja di institusi perguruan tinggi, apapun posisi Anda, apapun status ketenagakerjaan Anda.</p>
-                <ol>
-                    <li>Konsultasi hukum dan pendampingan
-                        <p>SPK memberikan bantuan konsultasi hukum dan pendampingan secara pro bono atas sengketa terkait masalah kerja yang dialami anggota seperti kenaikan pangkat, pemutusan hubungan kerja, diskriminasi, beban kerja berlebihan, sengketa kontrak, dan lain sebagainya.</p>
-                    </li>
-                    <li>Perwakilan (pengurus cabang/kantor?) di kampus Anda
-                        <p>Saat ini, SPK telah memiliki perwakilan di (jumlah) perguruan tinggi negeri dan (jumlah) perguruan tinggi swasta. Jumlah perwakilan ini akan berkembang lebih lanjut seiring dengan keterlibatan Anda sebagai anggota.</p>
-                    </li>
-                    <li>Aspirasi kolektif
-                        <p>Aspirasi anggota akan diperjuangkan melalui negosiasi yang dilakukan SPK dengan pengelola perguruan tinggi maupun advokasi hukum dan kebijakan. Anggota yang memiliki aspirasi dan masalah terkait kondisi kerja di institusinya tidak harus menghadapi pengelola perguruan tinggi secara individual, melainkan secara kolektif oleh institusi serikat.</p>
-                    </li>
-                    <li>Informasi terkini
-                        <p>Anggota mendapatkan informasi terkini secara rutin atas kegiatan dan agenda SPK, perkembangan advokasi yang dilakukan oleh SPK, dan laporan pengelolaan keuangan yang bersumber dari iuran anggota maupun donasi publik.</p>
-                    </li>
-                    <li>Akses kegiatan dan discount merchandise
-                        <p>Anggota dapat terlibat aktif dalam kegiatan-kegiatan SPK, di antaranya pendidikan dasar dan lanjutan, pelatihan teknis berserikat, dan lain sebagainya. Anggota juga mendapatkan discount untuk pembelian merchandise yang hasil penjualannya akan digunakan untuk kegiatan SPK.</p>
-                    </li>
-                </ol>
 
-            </div>
         </div>
+
     </div>
     <!-- End of Main Content -->
+
+    <script>
+        function changePage(pageName) {
+            var frame = document.getElementById('pageFrame');
+            switch (pageName) {
+                case 'AD-ART':
+                    frame.src = '<?= base_url('user/pdf_viewer'); ?>';
+                    setActiveTab('AD-ART');
+                    break;
+                case 'FAQ':
+                    frame.src = '<?= base_url('user/faq'); ?>'; // Ganti dengan URL FAQ Anda
+                    setActiveTab('FAQ');
+                    break;
+                case 'Manfaat':
+                    frame.src = '<?= base_url('user/manfaat'); ?>'; // Ganti dengan URL Info Anda
+                    setActiveTab('Manfaat');
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function setActiveTab(tabName) {
+            var tabs = document.querySelectorAll('.nav-link');
+            tabs.forEach(function(tab) {
+                if (tab.innerHTML === tabName) {
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-current', 'true');
+                } else {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-current', 'false');
+                }
+            });
+        }
+    </script>
+</div>
+</div>
+<!-- End of Main Content -->
 
 </div>
 

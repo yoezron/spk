@@ -321,6 +321,16 @@ class User extends CI_Controller
         $this->load->view('user/pdf_viewer');
     }
 
+    public function faq()
+    {
+        $this->load->view('user/faq'); // Memuat halaman FAQ
+    }
+
+    public function manfaat()
+    {
+        $this->load->view('user/manfaat'); // Memuat halaman FAQ
+    }
+
     public function addinfo()
     {
         $data['title'] = 'Tambah Informasi';
