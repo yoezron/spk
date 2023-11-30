@@ -7,12 +7,96 @@
     .center-text h1 {
         display: inline;
     }
+
+    .judul h1 {
+        color: aliceblue;
+    }
+
+    /* Gaya untuk elemen dengan kelas carousel-judul */
+    .carousel-judul {
+        position: relative;
+        font-size: 56px;
+        /* Ukuran huruf besar */
+        color: white;
+        /* Warna teks putih */
+        text-shadow: 2px 2px 5px black;
+        transition: color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+        /* Transisi warna saat dihover */
+    }
+
+    .carousel-judul:hover {
+        color: orange;
+        /* Warna teks menjadi orange saat dihover */
+        border-bottom-color: orange;
+        /* Warna garis bawah menjadi orange saat dihover */
+    }
+
+    .carousel-caption p {
+        font-style: italic;
+        color: white;
+        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    }
+
+    /* CSS untuk gambar carousel */
+    .carousel-item img {
+        max-width: 100%;
+        /* Lebar maksimum sesuai dengan parent element */
+        height: auto;
+        /* Tinggi otomatis sesuai proporsi aslinya */
+        display: block;
+        /* Menghilangkan whitespace tambahan */
+        margin: 0 auto;
+        /* Pusatkan gambar dalam carousel-item */
+    }
+
+    /* Media query untuk mengatur gambar carousel pada ukuran layar tertentu */
+    @media (min-width: 768px) {
+        .carousel-item img {
+            max-width: 1920px;
+            /* Lebar maksimum gambar */
+            max-height: 750px;
+            /* Tinggi maksimum gambar */
+        }
+    }
 </style>
 
 <body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-12 mx-auto">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php foreach ($all_posts as $index => $post) : ?>
+                            <div class="carousel-item <?= $index === 0 ? 'active' : ''; ?>">
+                                <img src="assets/img/posting/<?= $post['gambar']; ?>" class="d-block w-100" alt="Post Image">
+                                <div class="carousel-caption">
+                                    <a href="<?= base_url('post/view/' . $post['id']); ?>">
+                                        <h2 class="carousel-judul"><?= $post['judul_tulisan']; ?></h2>
+                                    </a>
+                                    <p><?= substr($post['isi_tulisan'], 0, 100) . '...'; ?></p>
+                                    <!-- Tambahkan elemen HTML lainnya sesuai kebutuhan -->
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="center-text mt-50">
         <h1>TULISAN ANGGOTA SERIKAT PEKERJA KAMPUS</h1>
     </div>
+
     <div class="tp-blog-2__area pt-100 pb-90">
         <div class="container">
             <div class="row">

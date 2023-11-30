@@ -20,6 +20,12 @@
         word-spacing: 1px;
     }
 
+    .postbox__title {
+        text-align: center;
+        color: coral;
+        text-shadow: 1px 1px 2px white;
+    }
+
     .sidebar__widget {
         padding: 30px;
     }
@@ -35,12 +41,14 @@
                 <?php if ($post) : ?>
                     <div class="postbox__wrapper">
                         <article class="postbox__item format-image mb-50 transition-3">
-                            <h3 class="postbox__title"><?= $post['judul_tulisan']; ?></h3>
                             <div class="postbox__thumb p-relative m-img">
                                 <div class="postbox__thumb-text d-none d-md-block">
                                     <span><?= date('d F', strtotime($post['waktu_posting'])); ?></span>
                                 </div>
                                 <img src="<?= base_url('assets/img/posting/' . $post['gambar']); ?>" alt="">
+                            </div>
+                            <div class="col-12 my-5 mx-auto">
+                                <h3 class="postbox__title"><?= $post['judul_tulisan']; ?></h3>
                             </div>
                             <div class="postbox__content">
                                 <div class="postbox__meta">

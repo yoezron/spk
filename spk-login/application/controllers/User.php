@@ -323,12 +323,12 @@ class User extends CI_Controller
 
     public function faq()
     {
-        $this->load->view('user/faq'); // Memuat halaman FAQ
+        $this->load->view('user/faq');
     }
 
     public function manfaat()
     {
-        $this->load->view('user/manfaat'); // Memuat halaman FAQ
+        $this->load->view('user/manfaat');
     }
 
     public function addinfo()
